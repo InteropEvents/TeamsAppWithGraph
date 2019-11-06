@@ -1,0 +1,24 @@
+﻿<p>
+    @*<div>
+        <lab class="ms-CommandButton-label" for="tabChoice">Select the tab to get started. </lab>
+        <select id="tabChoice" name="tabChoice">
+            <option value="" selected="selected">(Select a tab)</option>
+            <option value="first">Focus</option>
+        </select>
+    </div>*@
+    
+    <div class="ms-Dropdown" tabindex="0">
+        <label class="ms-Label">Select the tab to get started.</label>
+        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown"></i>
+        <select class="ms-Dropdown-select" id="tabChoice" name="tabChoice">
+            <option>Focus</option>
+        </select>
+    </div>
+</p>
+
+<script type="text/javascript">
+    var DropdownHTMLElements = document.querySelectorAll('.ms-Dropdown');
+    for (var i = 0; i < DropdownHTMLElements.length; ++i) {
+        var Dropdown = new fabric['Dropdown'](DropdownHTMLElements[i]);
+    }
+</script>

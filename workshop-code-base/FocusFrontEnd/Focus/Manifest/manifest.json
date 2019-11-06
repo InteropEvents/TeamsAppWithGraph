@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
+  "manifestVersion": "devPreview",
+  "version": "1.0.0",
+  "id": "b80303c4-4714-4972-a34e-5d7058d60407",
+  "packageName": "com.microsoft.focusapp",
+  "devicePermissions": [ "media" ],
+  "developer": {
+    "name": "Publisher Name",
+    "websiteUrl": "https://website.com/",
+    "privacyUrl": "https://website.com/privacy",
+    "termsOfUseUrl": "https://website.com/app-tos",
+    "mpnId": "1234567890"
+  },
+  "name": {
+    "short": "Focus"
+  },
+  "description": {
+    "short": "Basic Focus app",
+    "full": "Basic Focus app"
+  },
+  "icons": {
+    "outline": "icon.png",
+    "color": "icon.png"
+  },
+  "accentColor": "#888888",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://excelcustomfunc.azurewebsites.net/Home/Configure",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team",
+        "groupchat"
+      ]
+    }
+  ],
+  "staticTabs": [
+    {
+      "entityId": "TestFocusApp",
+      "name": "FocusTab",
+      "contentUrl": "https://excelcustomfunc.azurewebsites.net/WorkFlow",
+      "websiteUrl": "https://excelcustomfunc.azurewebsites.net",
+      "scopes": [ "personal" ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "excelcustomfunc.azurewebsites.net",
+    "74d394af.ngrok.io"
+  ]
+}

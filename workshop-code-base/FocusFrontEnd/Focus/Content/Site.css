@@ -1,0 +1,552 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.canvas-container {
+    margin: 0 auto;
+}
+
+p.focus-title {
+    text-align: center;
+    font-size: 7em;
+    /*margin: 20px 0 20px 0;*/
+}
+
+a.focus-title {
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+p.focus-title:nth-child(1) a {
+    font-size: 1.5em;
+    color: #000000;
+    font-family: Iceland;
+}
+
+    p.focus-title:nth-child(1) a:hover {
+        -webkit-animation: focus-title 1.5s ease-in-out infinite alternate;
+        -moz-animation: focus-title 1.5s ease-in-out infinite alternate;
+        animation: focus-title 1.5s ease-in-out infinite alternate;
+    }
+
+p.focus-title a.focus-title:hover {
+    color: #ffffff;
+}
+
+@-webkit-keyframes focus-title {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #000000, 0 0 70px #000000, 0 0 80px #000000, 0 0 100px #000000, 0 0 150px #000000;
+    }
+
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #000000, 0 0 35px #000000, 0 0 40px #000000, 0 0 50px #000000, 0 0 75px #000000;
+    }
+}
+
+@-moz-keyframes focus-title {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #000000, 0 0 70px #000000, 0 0 80px #000000, 0 0 100px #000000, 0 0 150px #000000;
+    }
+
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #000000, 0 0 35px #000000, 0 0 40px #000000, 0 0 50px #000000, 0 0 75px #000000;
+    }
+}
+
+@keyframes focus-title {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #000000, 0 0 70px #000000, 0 0 80px #000000, 0 0 100px #000000, 0 0 150px #000000;
+    }
+
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #000000, 0 0 35px #000000, 0 0 40px #000000, 0 0 50px #000000, 0 0 75px #000000;
+    }
+}
+
+/*Teams style update start*/
+/*button {
+    border: 0 !important;
+    background-color: white !important;
+}*/
+
+.card {
+    background-color: #f3f2f1;
+    border: 0 !important;
+    min-height: 480px;
+}
+
+input {
+    border: 0 !important;
+    background-color: #fff !important;
+}
+
+textarea {
+    border: 0 !important;
+    background-color: #fff !important;
+}
+
+.ms-Dropdown .ms-Label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ms-PersonaCard-actionDetailBox[style] {
+    height: 400px !important;
+}
+
+.ms-Dropdown-title {
+    border: none;
+}
+
+div {
+    font-family: "Segoe UI","Helvetica Neue","Apple Color Emoji","Segoe UI Emoji","Helvetica","Arial","sans-serif";
+}
+
+.major-btn {
+    width: 120px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 5px !important;
+}
+
+.major-btn-div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.display {
+    display: block;
+}
+
+.non-display {
+    display: none;
+}
+/* Defines the width of the carousel and centers it on the page */
+/* Defines the width of the carousel and centers it on the page */
+.slick-carousel {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.slick-slide img {
+    height: 50px;
+}
+
+/* The width of each slide */
+.slick-slide {
+    width: 50px;
+}
+
+/* Color of the arrows */
+.slick-next::before, .slick-prev::before {
+    color: blue;
+}
+
+canvas {
+    cursor: crosshair;
+    border: 1px solid #000000;
+}
+
+
+/*Teams style update end*/
+
+/* CSS for round Menu on canvas */
+body {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.toggle {
+    background-color: #c87f8a;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.fa-plus {
+    font-size: 10px;
+    color: white;
+    display: block;
+    margin-top: 10px;
+    transition: 0.7s;
+}
+
+.menu {
+    background-color: white;
+    height: 100px;
+    width: 100px;
+    transform: scale(0);
+    border-radius: 50%;
+    border-style: double;
+    border-color: #c87f8a;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: -1;
+    transition: 0.7s;
+}
+
+a-menu {
+    position: absolute;
+    font-size: 15px;
+    color: #BBBBBB;
+}
+
+    a-menu:nth-child(1) {
+        top: 6px;
+        left: 45px;
+    }
+
+    a-menu:nth-child(2) {
+        top: 24px;
+        left: 77px;
+    }
+
+    a-menu:nth-child(3) {
+        top: 58px;
+        left: 76px;
+    }
+
+    a-menu:nth-child(4) {
+        top: 78px;
+        left: 42px;
+    }
+
+    a-menu:nth-child(5) {
+        top: 58px;
+        left: 10px;
+    }
+
+    a-menu:nth-child(6) {
+        top: 23px;
+        left: 12px;
+    }
+
+    a-menu:hover {
+        color: #c87f8a;
+    }
+
+/*for centering the loading div */
+.center-div {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+
+
+.ring-container {
+    position: relative;
+}
+
+.circle {
+    width: 15px;
+    height: 15px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    position: absolute;
+    top: 23px;
+    left: 23px;
+}
+
+.ringring {
+    border: 3px solid #00BFFF;
+    -webkit-border-radius: 30px;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 0.0
+}
+
+@-webkit-keyframes pulsate {
+    0% {
+        -webkit-transform: scale(0.1, 0.1);
+        opacity: 0.0;
+    }
+
+    50% {
+        opacity: 1.0;
+    }
+
+    100% {
+        -webkit-transform: scale(1.2, 1.2);
+        opacity: 0.0;
+    }
+}
+
+/*For flow UI, overriding fabric */
+.ms-ListItem {
+    padding: 4px 2px;
+}
+
+.icon-background {
+    color: #c0ffc0;
+}
+
+tr td {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.fa-stack-2x {
+    font-size: 1.9em;
+}
+
+.fa-2x {
+    font-size: 1.8em;
+}
+
+.ms-PersonaCard {
+    box-shadow: 0px 2px 8px 4px rgba(0,0,0,0.5) !important;
+    color: rgba(0,0,0,0.87) !important;
+    border-color: rgba(0,0,0,0.87);
+    font-family: "Segoe UI", "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", Arial, Helvetica, sans-serif !important;
+    font-size: 10px !important;
+    font-style: normal !important;
+    font-weight: 400;
+    line-break: normal;
+    line-height: 14.2px;
+    max-width: 360px !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 445px;
+    display: none;
+    position: absolute;
+    z-index: 9;
+}
+
+.ms-PersonaCard-actions {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #f3f2f1
+}
+
+    .ms-PersonaCard-actions i {
+        font-size: 20px;
+    }
+
+.ms-PersonaCard-actionDetailBox {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.ms-Label {
+    font-size: 14px !important;
+    font-family: "Segoe UI", "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", Arial, Helvetica, sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.ms-ListItem-primaryText {
+    font-size: 14px !important;
+    font-family: "Segoe UI", "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", Arial, Helvetica, sans-serif !important;
+}
+
+.ms-ListItem-tertiaryText {
+    font-size: 10px !important;
+    font-family: "Segoe UI", "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", Arial, Helvetica, sans-serif !important;
+}
+
+.ms-PersonaCard-detailLine .ms-ListItem {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    padding-top: 0px !important;
+}
+
+.ms-TextField-field {
+    padding-top: 2px !important;
+}
+
+.flow-item-container {
+    border-bottom: 1px solid #ddd;
+}
+
+    .flow-item-container .ms-Label {
+        display: inline-block;
+        padding-left: 10px;
+    }
+
+        .flow-item-container .ms-Label.disabled {
+            color: lightgray
+        }
+
+    .flow-item-container label:hover {
+        color: #0078d7 !important;
+    }
+
+/* style in index */
+#fileLoader {
+    display: none
+}
+
+#focusLoader {
+    z-index: 200
+}
+
+    #focusLoader .spinner-border {
+        color: #201f1f
+    }
+
+#AudioText {
+    width: 30%;
+    text-align: left;
+    Left: 0;
+    right: 0;
+    height: 50px;
+    position: absolute;
+    z-index: 1;
+    display: none
+}
+
+#AudioTextLabel {
+    color: white
+}
+
+#mainTable {
+    display: none;
+    background-color: #201f1f
+}
+
+#div_photo {
+    display: none
+}
+
+#menu-mask {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: absolute;
+    display: block;
+    background-color: rgba(255, 255, 255,0.7);
+    display: none
+}
+
+#menu-mask-wait {
+    height: 24px;
+    width: 24px;
+    left: 160px;
+    top: 180px;
+    position: absolute
+}
+
+#menu-mask-done {
+    height: 24px;
+    width: 24px;
+    left: 162px;
+    top: 182px;
+    position: absolute;
+    display: none
+}
+
+    #menu-mask-done i {
+        font-size: 24px;
+        -webkit-text-stroke: 2px green
+    }
+
+.ms-TextField .ms-Label {
+    padding: 0
+}
+
+.ms-DatePicker {
+    margin-bottom: 7px;
+}
+
+.vh {
+    visibility: hidden
+}
+
+.button-container {
+    width: 88%;
+    text-align: center;
+    bottom: 10px;
+    position: absolute
+}
+
+.checkbox-container {
+    display: inline-block;
+    vertical-align: middle
+}
+
+    .checkbox-container input[type='checkbox'] {
+        border-radius: 0px !important;
+        height: 15px;
+        width: 15px;
+    }
+
+.ms-PersonaCard-detailExpander {
+    display: none;
+}
+
+.embed-responsive.margin-bottom{
+    margin-bottom:10px;
+}
+
+.ms-Dropdown .ms-Label {
+    padding-bottom: 0px !important;
+    margin-top: 8px;
+    margin-bottom: 0px !important
+}
+
+.ms-Dropdown.margin-bottom {
+    margin-bottom: 10px;
+}
+
+#Focus_Mail_Content {
+    min-height: 200px;
+    min-width: 320px;
+    padding-top: 5px !important
+}
+
+#Focus_FlipCamera {
+    color: white
+}
+
+#Focus_TakeSnapshot {
+    color: white
+}
+
+.image-container {
+    text-align: center;
+    padding-bottom: 10px;
+}
