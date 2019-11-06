@@ -317,7 +317,6 @@ async function btnAnimation() {
     $("#menu-mask").show();
 
     setTimeout(function () {
-        $("#menu-mask-wait").hide();
         $("#menu-mask").hide();
     }, 2000);
 }
