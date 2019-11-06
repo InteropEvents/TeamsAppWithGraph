@@ -1,0 +1,59 @@
+﻿
+<head>
+    <meta charset="utf-8">
+    <title>Resize HTML5 canvas dynamically | www.htmlcheats.com</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            border: 0;
+            overflow: hidden; /*  Disable scrollbars */
+            display: block;  /* No floating content on sides */
+        }
+    </style>
+</head>
+
+<body>
+<canvas id='c' style='position:absolute; left:0px; top:0px;'>
+</canvas>
+
+<script>
+    (function() {
+        var
+            // Obtain a reference to the canvas element using its id.
+            htmlCanvas = document.getElementById('c'),
+            // Obtain a graphics context on the canvas element for drawing.
+            context = htmlCanvas.getContext('2d');
+
+        // Start listening to resize events and draw canvas.
+        initialize();
+
+        function initialize() {
+            // Register an event listener to call the resizeCanvas() function 
+            // each time the window is resized.
+            window.addEventListener('resize', resizeCanvas, false);
+            // Draw canvas border for the first time.
+            resizeCanvas();
+        }
+
+        // Display custom canvas. In this case it's a blue, 5 pixel 
+        // border that resizes along with the browser window.
+        function redraw() {
+            context.strokeStyle = 'red';
+            context.lineWidth = '5';
+            context.strokeRect(0, 0, window.innerWidth, window.innerHeight);
+        }
+
+        // Runs each time the DOM window resize event fires.
+        // Resets the canvas dimensions to match window,
+        // then draws the new borders accordingly.
+        function resizeCanvas() {
+            htmlCanvas.width = window.innerWidth;
+            htmlCanvas.height = window.innerHeight;
+            redraw();
+        }
+    })();
+
+</script>
+</body> 
