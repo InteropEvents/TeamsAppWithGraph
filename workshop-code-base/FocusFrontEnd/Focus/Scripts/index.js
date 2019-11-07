@@ -74,25 +74,20 @@ function enableCard() {
     $(".ms-PersonaCard-actionDetailBox").show();
 }
 
+//https://docs.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http
 async function sendMail() {
     if (graphAccessToken) {
+        btnAnimation();
+        var mailSubject = $('#Focus_Mail_Subject').val();
+        var mailToAddress = $('.ms-Dropdown-title')[0].innerHTML;
+        var mailContent = $('#Focus_Mail_Content').val();
 
-        const mail = {
-            subject: $('#Focus_Mail_Subject').val(),
-            toRecipients: [
-                {
-                    emailAddress: {
-                        address: $('.ms-Dropdown-title')[0].innerHTML
-                    },
-                },
-            ],
-            body: {
-                content: $('#Focus_Mail_Content').val(),
-                contentType: "html",
-            },
-        };
+        //Please read the graph document to find out the api path and message body format
+        var mailContent = null;
+        var apiPath = null;
+
         try {
-            let response = await graphClient.api("/me/sendMail").post({ message: mail });
+            let response = await graphClient.api(apiPath).post(mailContent);
             console.log(response);
         } catch (error) {
             throw error;
