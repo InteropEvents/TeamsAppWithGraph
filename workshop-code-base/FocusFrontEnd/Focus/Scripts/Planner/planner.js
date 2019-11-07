@@ -155,9 +155,12 @@ function createOrUpdatePlannerTask(event) {
                 }
         }
 
-        // this is for a new task. note the ".post()" and "/planner/tasks"
         if (event.data.taskId === "0") {
-            graphClient.api('/planner/tasks').post(plannerTask).then(async function (task) {
+            createTask(plannerTask.planId,
+                plannerTask.bucketId,
+                plannerTask.title,
+                plannerTask.dueDateTime,
+                plannerTask.assignments).then(async function (task) {
                 console.log("result creations of task: " + task);
                 var det = await graphClient
                     .api('/planner/tasks/' + task.id + '/details')
@@ -686,4 +689,15 @@ async function getTaskStatus(rectIndex, taskId) {
     var statArray = [];
     statArray.push({ rectId: rectIndex, id: tasks.id, percentComplete: tasks.percentComplete });
     return statArray;
+}
+
+//https://docs.microsoft.com/en-us/graph/api/planner-post-tasks?view=graph-rest-1.0&tabs=http
+async function createTask(planId, bucketId, title, dueDateTime, assignments) {
+    btnAnimation();
+
+    //Please read the graph document to find out the api path and message body format
+    var path = null;
+    var plannerTask = null;
+
+    return graphClient.api(path).post(plannerTask);
 }

@@ -106,6 +106,7 @@ async function sendCard() {
 
     //Please read the graph document to find out the api path
     var path = null;
+
     var messageContent = $('#Focus_Message_Content').val();
 
     //Please read the graph document to find out the message body format
