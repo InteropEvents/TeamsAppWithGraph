@@ -1,4 +1,6 @@
-﻿body {
+﻿// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+body {
     padding-top: 0px;
     padding-bottom: 0px;
 }
@@ -114,7 +116,13 @@ textarea {
 }
 
 .ms-PersonaCard-actionDetailBox[style] {
-    height: 400px !important;
+    height: auto !important;
+    overflow: auto !important;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .ms-Dropdown-title {
@@ -349,12 +357,12 @@ tr td {
     line-break: normal;
     line-height: 14.2px;
     max-width: 360px !important;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 5px;
     height: 445px;
     display: none;
     position: absolute;
     z-index: 9;
+    background-color: #ffffff;
 }
 
 .ms-PersonaCard-actions {
@@ -497,10 +505,41 @@ tr td {
 }
 
 .button-container {
-    width: 88%;
+    width: 100%;
     text-align: center;
     bottom: 10px;
-    position: absolute
+    /*position: absolute;*/
+    left: 0;
+}
+
+.ms-PersonaCard-details {
+    max-height: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.ms-PersonaCard-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 60px;
+    width: 100%;
+    overflow: auto;
+    padding: 9px 20px;
+    box-sizing: border-box;
+}
+
+    .ms-PersonaCard-form:last-child {
+        top: unset;
+        bottom: 0;
+    }
+
+@media (min-width: 480px) {
+    .ms-ContextualHost {
+        position: absolute;
+    }
 }
 
 .checkbox-container {
@@ -518,8 +557,8 @@ tr td {
     display: none;
 }
 
-.embed-responsive.margin-bottom{
-    margin-bottom:10px;
+.embed-responsive.margin-bottom {
+    margin-bottom: 10px;
 }
 
 .ms-Dropdown .ms-Label {

@@ -1,4 +1,7 @@
-﻿var g_appId = "9b8fcf70-d72e-4225-a79a-0451491e79bf";
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var g_appId = "b45bd570-5f5a-4c46-b0fc-a7fd249488f2";
 // https://excelcustomfunc.azurewebsites.net
 
 //var g_appId = "26c54468-71c9-4c13-a20e-ec684cff9928";

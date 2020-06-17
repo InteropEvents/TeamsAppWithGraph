@@ -1,4 +1,7 @@
-﻿microsoftTeams.initialize();
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+microsoftTeams.initialize();
 
 // ADAL.js configuration
 let config = {

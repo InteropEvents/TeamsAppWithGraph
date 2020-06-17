@@ -1,4 +1,7 @@
-﻿using Microsoft.Graph;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using Microsoft.Graph;
 using System;
 using System.IO;
 using System.Linq;
@@ -56,7 +59,7 @@ namespace Focus.Controllers
             graphClient = new GraphServiceClient(new DelegateAuthenticationProvider(async (request) =>
             {
                 request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-                Task.FromResult<object>(null).GetAwaiter().GetResult();
+                await Task.FromResult<object>(null);
             }));
 
             m_Context.teamsChannelID = teamsChannelID;

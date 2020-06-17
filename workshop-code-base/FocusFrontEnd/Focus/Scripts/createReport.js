@@ -1,4 +1,7 @@
-﻿async function createReport(event) {
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+async function createReport(event) {
 
     var imageName = event.data.imageName;
     var iRectMD = listOfRectMetadata.findIndex(rmd => { return rmd.imageName === imageName; });

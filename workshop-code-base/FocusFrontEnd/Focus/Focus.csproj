@@ -267,6 +267,7 @@
     <Content Include="Scripts\silentInitiateAuth.js" />
     <Content Include="Scripts\teamsapp.js" />
     <Content Include="Scripts\utility.js" />
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

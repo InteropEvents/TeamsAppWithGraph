@@ -1,4 +1,7 @@
-﻿function checkInventory() {
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+function checkInventory() {
     console.log("check inventory clicked");
     $.ajax({
         type: 'POST',
@@ -28,6 +31,7 @@ function startApproval() {
 
 function TriggerFlows() {
     console.log("Tigger flows");
+    btnAnimation();
     if ($("#ck_flow_inventory").prop("checked") === true) {
         checkInventory();
     }

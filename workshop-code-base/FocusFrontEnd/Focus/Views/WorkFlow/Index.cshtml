@@ -1,4 +1,6 @@
-﻿@{
+﻿<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information. -->
+
+@{
     ViewBag.Title = "Work Flow";
 }
 
@@ -53,246 +55,254 @@
                         <div class="ms-PersonaCard-actionDetailBox">
                             <!-- Planner task creation dialog -->
                             <div data-detail-id="Planner" class="ms-PersonaCard-details">
-                                <div class="ms-PersonaCard-detailLine">
-                                    <div class="image-container">
-                                        <img crossorigin="anonymous" id="snappedImage" width=85 height=50 />
+                                <div class="ms-PersonaCard-form">
+                                    <div class="ms-PersonaCard-detailLine">
+                                        <div class="image-container">
+                                            <img crossorigin="anonymous" id="snappedImage" width=85 height=50 />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="ms-TextField">
-                                    <label class="ms-Label">Task Title:</label>
-                                    <input id="taskTitle" class="ms-TextField-field" type="text" value="" placeholder="This is the task title...">
-                                </div>
-                                <div class="ms-DatePicker">
                                     <div class="ms-TextField">
-                                        <label class="ms-Label">Due date:</label>
-                                        <i class="ms-DatePicker-event ms-Icon ms-Icon--Event"></i>
-                                        <input id="newDueDate" class="ms-TextField-field" type="text" placeholder="Select a date&hellip;">
+                                        <label class="ms-Label">Task Title:</label>
+                                        <input id="taskTitle" class="ms-TextField-field" type="text" value="" placeholder="This is the task title...">
                                     </div>
-                                    <div class="ms-DatePicker-monthComponents">
-                                        <span class="ms-DatePicker-nextMonth js-nextMonth"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
-                                        <span class="ms-DatePicker-prevMonth js-prevMonth"><i class="ms-Icon ms-Icon--ChevronLeft"></i></span>
-                                        <div class="ms-DatePicker-headerToggleView js-showMonthPicker"></div>
-                                    </div>
-                                    <span class="ms-DatePicker-goToday js-goToday">Go to today</span>
-                                    <div class="ms-DatePicker-monthPicker">
-                                        <div class="ms-DatePicker-header">
-                                            <div class="ms-DatePicker-yearComponents">
-                                                <span class="ms-DatePicker-nextYear js-nextYear"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
-                                                <span class="ms-DatePicker-prevYear js-prevYear"><i class="ms-Icon ms-Icon--ChevronLeft"></i></span>
+                                    <div class="ms-DatePicker">
+                                        <div class="ms-TextField">
+                                            <label class="ms-Label">Due date:</label>
+                                            <i class="ms-DatePicker-event ms-Icon ms-Icon--Event"></i>
+                                            <input id="newDueDate" class="ms-TextField-field" type="text" placeholder="Select a date&hellip;">
+                                        </div>
+                                        <div class="ms-DatePicker-monthComponents">
+                                            <span class="ms-DatePicker-nextMonth js-nextMonth"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
+                                            <span class="ms-DatePicker-prevMonth js-prevMonth"><i class="ms-Icon ms-Icon--ChevronLeft"></i></span>
+                                            <div class="ms-DatePicker-headerToggleView js-showMonthPicker"></div>
+                                        </div>
+                                        <span class="ms-DatePicker-goToday js-goToday">Go to today</span>
+                                        <div class="ms-DatePicker-monthPicker">
+                                            <div class="ms-DatePicker-header">
+                                                <div class="ms-DatePicker-yearComponents">
+                                                    <span class="ms-DatePicker-nextYear js-nextYear"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
+                                                    <span class="ms-DatePicker-prevYear js-prevYear"><i class="ms-Icon ms-Icon--ChevronLeft"></i></span>
+                                                </div>
+                                                <div class="ms-DatePicker-currentYear js-showYearPicker"></div>
                                             </div>
-                                            <div class="ms-DatePicker-currentYear js-showYearPicker"></div>
+                                            <div class="ms-DatePicker-optionGrid">
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="0">Jan</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="1">Feb</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="2">Mar</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="3">Apr</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="4">May</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="5">Jun</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="6">Jul</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="7">Aug</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="8">Sep</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="9">Oct</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="10">Nov</span>
+                                                <span class="ms-DatePicker-monthOption js-changeDate" data-month="11">Dec</span>
+                                            </div>
                                         </div>
-                                        <div class="ms-DatePicker-optionGrid">
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="0">Jan</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="1">Feb</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="2">Mar</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="3">Apr</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="4">May</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="5">Jun</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="6">Jul</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="7">Aug</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="8">Sep</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="9">Oct</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="10">Nov</span>
-                                            <span class="ms-DatePicker-monthOption js-changeDate" data-month="11">Dec</span>
+                                        <div class="ms-DatePicker-yearPicker">
+                                            <div class="ms-DatePicker-decadeComponents">
+                                                <span class="ms-DatePicker-nextDecade js-nextDecade"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
+                                                <span class="ms-DatePicker-prevDecade js-prevDecade"><i class="ms-Icon ms-Icon--ChevronLeft"></i></span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="ms-DatePicker-yearPicker">
-                                        <div class="ms-DatePicker-decadeComponents">
-                                            <span class="ms-DatePicker-nextDecade js-nextDecade"><i class="ms-Icon ms-Icon--ChevronRight"></i></span>
-                                            <span class="ms-DatePicker-prevDecade js-prevDecade"><i class="ms-Icon ms-Icon--ChevronLeft"></i></span>
+                                    <div class="ms-TextField">
+                                        <label class="ms-Label">Description: </label>
+                                        <input class="ms-TextField-field" id="taskDescription" type="text" value="" placeholder="This is the task description...">
+                                    </div>
+                                    <div class="ms-PeoplePicker ms-PeoplePicker--compact">
+                                        <div class="ms-PeoplePicker-searchBox">
+                                            <div class="ms-TextField ms-TextField--textFieldUnderlined">
+                                                <label class="ms-Label vh">Assign to:</label>
+                                                <input class="ms-TextField-field" id="taskAssignees" type="text" value="" placeholder="Select or enter an option">
+                                            </div>
+                                        </div>
+                                        <div class="ms-PeoplePicker-results ms-PeoplePicker-results--compact">
+                                            <div id="myPeopleResultGroup" class="ms-PeoplePicker-resultGroup">
+                                                <div class="ms-PeoplePicker-resultGroupTitle">
+                                                    Contacts
+                                                </div>
+                                                <div class="ms-PeoplePicker-result" tabindex="1">
+                                                    <div class="ms-Persona ms-Persona--xs">
+                                                        <div class="ms-Persona-imageArea">
+                                                            <div class="ms-Persona-initials ms-Persona-initials--blue">RM</div>
+                                                        </div>
+                                                        <div class="ms-Persona-presence">
+                                                        </div>
+                                                        <div class="ms-Persona-details">
+                                                            <div class="ms-Persona-primaryText">Russel Miller</div>
+                                                            <div class="ms-Persona-secondaryText">Sales</div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="ms-PeoplePicker-resultAction">
+                                                        <i class="ms-Icon ms-Icon--Clear"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="ms-PeoplePicker-result" tabindex="1">
+                                                    <div class="ms-Persona ms-Persona--xs">
+                                                        <div class="ms-Persona-imageArea">
+                                                            <div class="ms-Persona-initials ms-Persona-initials--purple">DF</div>
+                                                        </div>
+                                                        <div class="ms-Persona-presence">
+                                                        </div>
+                                                        <div class="ms-Persona-details">
+                                                            <div class="ms-Persona-primaryText">Douglas Fielder</div>
+                                                            <div class="ms-Persona-secondaryText">Public Relations</div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="ms-PeoplePicker-resultAction">
+                                                        <i class="ms-Icon ms-Icon--Clear"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="ms-PeoplePicker-result" tabindex="1">
+                                                    <div class="ms-Persona ms-Persona--xs">
+                                                        <div class="ms-Persona-imageArea">
+                                                            <div class="ms-Persona-initials ms-Persona-initials--black">GS</div>
+                                                        </div>
+                                                        <div class="ms-Persona-presence">
+                                                        </div>
+                                                        <div class="ms-Persona-details">
+                                                            <div class="ms-Persona-primaryText">Grant Steel</div>
+                                                            <div class="ms-Persona-secondaryText">Sales</div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="ms-PeoplePicker-resultAction">
+                                                        <i class="ms-Icon ms-Icon--Clear"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="ms-PeoplePicker-result" tabindex="1">
+                                                    <div class="ms-Persona ms-Persona--xs">
+                                                        <div class="ms-Persona-imageArea">
+                                                            <div class="ms-Persona-initials ms-Persona-initials--green">HW</div>
+                                                        </div>
+                                                        <div class="ms-Persona-presence">
+                                                        </div>
+                                                        <div class="ms-Persona-details">
+                                                            <div class="ms-Persona-primaryText">Harvey Wallin</div>
+                                                            <div class="ms-Persona-secondaryText">Public Relations</div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="ms-PeoplePicker-resultAction">
+                                                        <i class="ms-Icon ms-Icon--Clear"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <button class="ms-PeoplePicker-searchMore vh">
+                                                <div class="ms-PeoplePicker-searchMoreIcon">
+                                                    <i class="ms-Icon ms-Icon--Search"></i>
+                                                </div>
+                                                <div class="ms-PeoplePicker-searchMoreText">
+                                                    Search my groups
+                                                </div>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ms-TextField">
-                                    <label class="ms-Label">Description: </label>
-                                    <input class="ms-TextField-field" id="taskDescription" type="text" value="" placeholder="This is the task description...">
-                                </div>
-                                <div class="ms-PeoplePicker ms-PeoplePicker--compact">
-                                    <div class="ms-PeoplePicker-searchBox">
-                                        <div class="ms-TextField ms-TextField--textFieldUnderlined">
-                                            <label class="ms-Label vh">Assign to:</label>
-                                            <input class="ms-TextField-field" id="taskAssignees" type="text" value="" placeholder="Select or enter an option">
-                                        </div>
-                                    </div>
-                                    <div class="ms-PeoplePicker-results ms-PeoplePicker-results--compact">
-                                        <div id="myPeopleResultGroup" class="ms-PeoplePicker-resultGroup">
-                                            <div class="ms-PeoplePicker-resultGroupTitle">
-                                                Contacts
-                                            </div>
-                                            <div class="ms-PeoplePicker-result" tabindex="1">
-                                                <div class="ms-Persona ms-Persona--xs">
-                                                    <div class="ms-Persona-imageArea">
-                                                        <div class="ms-Persona-initials ms-Persona-initials--blue">RM</div>
-                                                    </div>
-                                                    <div class="ms-Persona-presence">
-                                                    </div>
-                                                    <div class="ms-Persona-details">
-                                                        <div class="ms-Persona-primaryText">Russel Miller</div>
-                                                        <div class="ms-Persona-secondaryText">Sales</div>
-                                                    </div>
-                                                </div>
-                                                <button class="ms-PeoplePicker-resultAction">
-                                                    <i class="ms-Icon ms-Icon--Clear"></i>
-                                                </button>
-                                            </div>
-                                            <div class="ms-PeoplePicker-result" tabindex="1">
-                                                <div class="ms-Persona ms-Persona--xs">
-                                                    <div class="ms-Persona-imageArea">
-                                                        <div class="ms-Persona-initials ms-Persona-initials--purple">DF</div>
-                                                    </div>
-                                                    <div class="ms-Persona-presence">
-                                                    </div>
-                                                    <div class="ms-Persona-details">
-                                                        <div class="ms-Persona-primaryText">Douglas Fielder</div>
-                                                        <div class="ms-Persona-secondaryText">Public Relations</div>
-                                                    </div>
-                                                </div>
-                                                <button class="ms-PeoplePicker-resultAction">
-                                                    <i class="ms-Icon ms-Icon--Clear"></i>
-                                                </button>
-                                            </div>
-                                            <div class="ms-PeoplePicker-result" tabindex="1">
-                                                <div class="ms-Persona ms-Persona--xs">
-                                                    <div class="ms-Persona-imageArea">
-                                                        <div class="ms-Persona-initials ms-Persona-initials--black">GS</div>
-                                                    </div>
-                                                    <div class="ms-Persona-presence">
-                                                    </div>
-                                                    <div class="ms-Persona-details">
-                                                        <div class="ms-Persona-primaryText">Grant Steel</div>
-                                                        <div class="ms-Persona-secondaryText">Sales</div>
-                                                    </div>
-                                                </div>
-                                                <button class="ms-PeoplePicker-resultAction">
-                                                    <i class="ms-Icon ms-Icon--Clear"></i>
-                                                </button>
-                                            </div>
-                                            <div class="ms-PeoplePicker-result" tabindex="1">
-                                                <div class="ms-Persona ms-Persona--xs">
-                                                    <div class="ms-Persona-imageArea">
-                                                        <div class="ms-Persona-initials ms-Persona-initials--green">HW</div>
-                                                    </div>
-                                                    <div class="ms-Persona-presence">
-                                                    </div>
-                                                    <div class="ms-Persona-details">
-                                                        <div class="ms-Persona-primaryText">Harvey Wallin</div>
-                                                        <div class="ms-Persona-secondaryText">Public Relations</div>
-                                                    </div>
-                                                </div>
-                                                <button class="ms-PeoplePicker-resultAction">
-                                                    <i class="ms-Icon ms-Icon--Clear"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <button class="ms-PeoplePicker-searchMore vh">
-                                            <div class="ms-PeoplePicker-searchMoreIcon">
-                                                <i class="ms-Icon ms-Icon--Search"></i>
-                                            </div>
-                                            <div class="ms-PeoplePicker-searchMoreText">
-                                                Search my groups
-                                            </div>
+                                <div class="ms-PersonaCard-form">
+                                    <div class="button-container">
+                                        <button class="ms-Button" id="createOrUpdatePlannerTask">
+                                            <span id="createOrUpdateTaskBtn" class="ms-Button-label">Create Task</span>
                                         </button>
+                                        @*<button class="btn" id="createOrUpdatePlannerTask"></button>*@
                                     </div>
-                                </div>
-                                <div class="button-container">
-                                    <button class="ms-Button" id="createOrUpdatePlannerTask">
-                                        <span id="createOrUpdateTaskBtn" class="ms-Button-label">Create Task</span>
-                                    </button>
-                                    @*<button class="btn" id="createOrUpdatePlannerTask"></button>*@
                                 </div>
                             </div>
                             <!-- Planner task creation dialog -->
                             <div data-detail-id="Flow" class="ms-PersonaCard-details">
-                                <div class="ms-PersonaCard-detailLine">
-                                    <ul class="ms-List">
-                                        <li>
-                                            <div class="flow-item-container">
-                                                <div class="checkbox-container">
-                                                    <input type="checkbox" id="ck_flow_inventory">
+                                <div class="ms-PersonaCard-form">
+                                    <div class="ms-PersonaCard-detailLine">
+                                        <ul class="ms-List">
+                                            <li>
+                                                <div class="flow-item-container">
+                                                    <div class="checkbox-container">
+                                                        <input type="checkbox" id="ck_flow_inventory">
+                                                    </div>
+                                                    <label class="ms-Label">
+                                                        Send Inventory details to TEAMS
+                                                    </label>
                                                 </div>
-                                                <label class="ms-Label">
-                                                    Send Inventory details to TEAMS
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="flow-item-container">
-                                                <div class="checkbox-container">
-                                                    <input type="checkbox" id="ck_flow_approval">
+                                            </li>
+                                            <li>
+                                                <div class="flow-item-container">
+                                                    <div class="checkbox-container">
+                                                        <input type="checkbox" id="ck_flow_approval">
+                                                    </div>
+                                                    <label class="ms-Label">
+                                                        Start Approval for part and update TEAMS
+                                                    </label>
                                                 </div>
-                                                <label class="ms-Label">
-                                                    Start Approval for part and update TEAMS
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="flow-item-container">
-                                                <div class="checkbox-container">
-                                                    <input type="checkbox" disabled="disabled">
+                                            </li>
+                                            <li>
+                                                <div class="flow-item-container">
+                                                    <div class="checkbox-container">
+                                                        <input type="checkbox" disabled="disabled">
+                                                    </div>
+                                                    <label class="ms-Label diabled">
+                                                        Create a new Task and update TEAMS
+                                                    </label>
                                                 </div>
-                                                <label class="ms-Label diabled">
-                                                    Create a new Task and update TEAMS
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="flow-item-container">
-                                                <div class="checkbox-container">
-                                                    <input type="checkbox" disabled="disabled">
+                                            </li>
+                                            <li>
+                                                <div class="flow-item-container">
+                                                    <div class="checkbox-container">
+                                                        <input type="checkbox" disabled="disabled">
+                                                    </div>
+                                                    <label class="ms-Label disabled">
+                                                        Reassign the Task and update TEAMS
+                                                    </label>
                                                 </div>
-                                                <label class="ms-Label disabled">
-                                                    Reassign the Task and update TEAMS
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="flow-item-container">
-                                                <div class="checkbox-container">
-                                                    <input type="checkbox" disabled="disabled">
+                                            </li>
+                                            <li>
+                                                <div class="flow-item-container">
+                                                    <div class="checkbox-container">
+                                                        <input type="checkbox" disabled="disabled">
+                                                    </div>
+                                                    <label class="ms-Label disabled">
+                                                        Complete the Task and update TEAMS
+                                                    </label>
                                                 </div>
-                                                <label class="ms-Label disabled">
-                                                    Complete the Task and update TEAMS
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="flow-item-container">
-                                                <div class="checkbox-container">
-                                                    <input type="checkbox" disabled="disabled">
+                                            </li>
+                                            <li>
+                                                <div class="flow-item-container">
+                                                    <div class="checkbox-container">
+                                                        <input type="checkbox" disabled="disabled">
+                                                    </div>
+                                                    <label class="ms-Label disabled">
+                                                        Send text alert to Service Team
+                                                    </label>
                                                 </div>
-                                                <label class="ms-Label disabled">
-                                                    Send text alert to Service Team
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="flow-item-container">
-                                                <div class="checkbox-container">
-                                                    <input type="checkbox" disabled="disabled">
+                                            </li>
+                                            <li>
+                                                <div class="flow-item-container">
+                                                    <div class="checkbox-container">
+                                                        <input type="checkbox" disabled="disabled">
+                                                    </div>
+                                                    <label class="ms-Label disabled">
+                                                        Send text alert to Plumbing Team
+                                                    </label>
                                                 </div>
-                                                <label class="ms-Label disabled">
-                                                    Send text alert to Plumbing Team
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="flow-item-container">
-                                                <div class="checkbox-container">
-                                                    <input type="checkbox" disabled="disabled">
+                                            </li>
+                                            <li>
+                                                <div class="flow-item-container">
+                                                    <div class="checkbox-container">
+                                                        <input type="checkbox" disabled="disabled">
+                                                    </div>
+                                                    <label class="ms-Label disabled">
+                                                        Send text alert to Maintainence Team
+                                                    </label>
                                                 </div>
-                                                <label class="ms-Label disabled">
-                                                    Send text alert to Maintainence Team
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="button-container">
-                                    <button class="ms-Button" onclick="TriggerFlows()">
-                                        <span class="ms-Button-label">Trigger Flows</span>
-                                    </button>
-                                    @*<button class="btn" id="createOrUpdatePlannerTask"></button>*@
+                                <div class="ms-PersonaCard-form">
+                                    <div class="button-container">
+                                        <button class="ms-Button" onclick="TriggerFlows()">
+                                            <span class="ms-Button-label">Trigger Flows</span>
+                                        </button>
+                                        @*<button class="btn" id="createOrUpdatePlannerTask"></button>*@
+                                    </div>
                                 </div>
                             </div>
                             <div data-detail-id="Video" class="ms-PersonaCard-details">
@@ -313,58 +323,68 @@
                                 </div>
                             </div>
                             <div data-detail-id="Mail" class="ms-PersonaCard-details">
-                                <div class="ms-Dropdown margin-bottom" tabindex="0">
-                                    <label class="ms-Label">Email:</label>
-                                    <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown"></i>
-                                    <select id="Focus_SendTo" class="ms-Dropdown-select"></select>
+                                <div class="ms-PersonaCard-form">
+                                    <div class="ms-Dropdown margin-bottom" tabindex="0">
+                                        <label class="ms-Label">Email:</label>
+                                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown"></i>
+                                        <select id="Focus_SendTo" class="ms-Dropdown-select"></select>
+                                    </div>
+                                    <div class="ms-TextField">
+                                        <label class="ms-Label">Subject:</label>
+                                        <input id="Focus_Mail_Subject" class="ms-TextField-field" type="text" value="" placeholder="This is mail subject...">
+                                    </div>
+                                    <div class="ms-TextField">
+                                        <label class="ms-Label">Content:</label>
+                                        <textarea id="Focus_Mail_Content" class="ms-TextField-field" placeholder="This is mail content..."></textarea>
+                                    </div>
                                 </div>
-                                <div class="ms-TextField">
-                                    <label class="ms-Label">Subject:</label>
-                                    <input id="Focus_Mail_Subject" class="ms-TextField-field" type="text" value="" placeholder="This is mail subject...">
-                                </div>
-                                <div class="ms-TextField">
-                                    <label class="ms-Label">Content:</label>
-                                    <textarea id="Focus_Mail_Content" class="ms-TextField-field" placeholder="This is mail content..."></textarea>
-                                </div>
-                                <div class="button-container">
-                                    <button class="ms-Button" onclick="sendMail()">
-                                        <span class="ms-Button-label">Send Mail</span>
-                                    </button>
-                                    @*<button class="btn" id="createOrUpdatePlannerTask"></button>*@
+                                <div class="ms-PersonaCard-form">
+                                    <div class="button-container">
+                                        <button class="ms-Button" onclick="sendMail()">
+                                            <span class="ms-Button-label">Send Mail</span>
+                                        </button>
+                                        @*<button class="btn" id="createOrUpdatePlannerTask"></button>*@
+                                    </div>
                                 </div>
                                 @*<div style="width: 60%; text-align: left; float:right">
-                <button class="btn" onclick="Sendmail()"><i class="ms-Icon ms-Icon--Send" style='font-size:20px;'></i></button>
-            </div>*@
-
+                                        <button class="btn" onclick="Sendmail()"><i class="ms-Icon ms-Icon--Send" style='font-size:20px;'></i></button>
+                                    </div>*@
                             </div>
                             <div data-detail-id="Message" class="ms-PersonaCard-details">
-
-                                <div class="ms-TextField">
-                                    <label class="ms-Label">Content:</label>
-                                    <textarea id="Focus_Message_Content" class="ms-TextField-field" placeholder="This is message content..."></textarea>
+                                <div class="ms-PersonaCard-form">
+                                    <div class="ms-TextField">
+                                        <label class="ms-Label">Content:</label>
+                                        <textarea id="Focus_Message_Content" class="ms-TextField-field" placeholder="This is message content..."></textarea>
+                                    </div>
                                 </div>
-                                <div class="button-container">
-                                    <button class="ms-Button" onclick="sendMessage()">
-                                        <span class="ms-Button-label">Send As Message</span>
-                                    </button>
-                                    <button class="ms-Button" onclick="sendCard()">
-                                        <span class="ms-Button-label">Send As Card</span>
-                                    </button>
+                                <div class="ms-PersonaCard-form">
+                                    <div class="button-container">
+                                        <button class="ms-Button" onclick="sendMessage()">
+                                            <span class="ms-Button-label">Send As Message</span>
+                                        </button>
+                                        <button class="ms-Button" onclick="sendCard()">
+                                            <span class="ms-Button-label">Send As Card</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div data-detail-id="Report" class="ms-PersonaCard-details">
-                                <div class="ms-PersonaCard-detailLine">
-                                    <label class="ms-Label">Create report for Focus channel with:</label>
-                                    @*<span class="ms-ListItem-primaryText">Send Inventory details to TEAMS</span>*@
-                                    <span class="ms-ListItem-tertiaryText">Image of this task's issue,</span>
-                                    <span class="ms-ListItem-tertiaryText">Charts for teams progress on tasks</span>
-                                    <span class="ms-ListItem-tertiaryText">All task data for this channel,</span>
+                                <div class="ms-PersonaCard-form">
+                                    <div class="ms-PersonaCard-detailLine">
+                                        <label class="ms-Label">Create report for Focus channel with:</label>
+                                        @*<span class="ms-ListItem-primaryText">Send Inventory details to TEAMS</span>*@
+                                        <span class="ms-ListItem-tertiaryText">Image of this task's issue,</span>
+                                        <span class="ms-ListItem-tertiaryText">Charts for teams progress on tasks</span>
+                                        <span class="ms-ListItem-tertiaryText">All task data for this channel,</span>
+                                    </div>
                                 </div>
-                                <div class="button-container">
-                                    <button id="createReport" class="ms-Button">
-                                        <span class="ms-Button-label">Create Report</span>
-                                    </button>
-                                    @*<button class="btn" id="createOrUpdatePlannerTask"></button>*@
+                                <div class="ms-PersonaCard-form">
+                                    <div class="button-container">
+                                        <button id="createReport" class="ms-Button">
+                                            <span class="ms-Button-label">Create Report</span>
+                                        </button>
+                                        @*<button class="btn" id="createOrUpdatePlannerTask"></button>*@
+                                    </div>
                                 </div>
                             </div>
                         </div>

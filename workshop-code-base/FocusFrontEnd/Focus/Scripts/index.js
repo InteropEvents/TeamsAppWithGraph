@@ -1,4 +1,7 @@
-﻿const noOfRectsAllowed = 3;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+const noOfRectsAllowed = 3;
 const states = {
     EDIT: 'Edit',
     VIEW: 'View',
@@ -10,7 +13,7 @@ var backgroundPrimaryImage = "";
 microsoftTeams.initialize();
 var graphAccessToken = null;
 var graphClient = null;
-var graphClientBeta = null;
+var graphClientBeta = null; 
 var clientWidth = 0;
 var clientHeight = 0;
 var teamsContext = null;
@@ -52,10 +55,30 @@ for (var i = 0; i < TextFieldElements.length; i++) {
 //    var Dropdown = new fabric['Dropdown'](DropdownHTMLElements[i]);
 //}
 
-var PeoplePickerElements = document.querySelectorAll(".ms-PeoplePicker");
-for (var i = 0; i < PeoplePickerElements.length; i++) {
-    new fabric['PeoplePicker'](PeoplePickerElements[i]);
-}
+var PeoplePickerElements = [].map.call(document.querySelectorAll(".ms-PeoplePicker"), function (element, index) {
+    var control = new fabric['PeoplePicker'](element);
+    if (index === 0) {
+        document.querySelectorAll(".ms-PeoplePicker #taskAssignees")[0].addEventListener("mouseover", function (t) {
+            var peopleList = control._peoplePickerMenu.querySelectorAll(".ms-PeoplePicker-result");
+            var ids = $('div.ms-PeoplePicker-searchBox').find('.ms-Persona-secondaryText').map(function () {
+                return this.innerText;
+            });
+            ids = Array.prototype.concat.apply([], ids);
+
+            [].forEach.call(peopleList, function (item) {
+                item.style.display = "";
+            });
+            peopleList.forEach(function (item) {
+                var val = item.querySelector(".ms-Persona-secondaryText").innerText;
+                if (ids.indexOf(val) >= 0) {
+                    item.style.display = "none";
+                }
+            });
+        });
+    }
+    return control;
+});
+
 
 var DatePickerElements = document.querySelectorAll(".ms-DatePicker");
 for (var i = 0; i < DatePickerElements.length; i++) {
@@ -83,11 +106,13 @@ async function sendMail() {
         var mailContent = $('#Focus_Mail_Content').val();
 
         //Please read the graph document to find out the api path and message body format
-        var mailContent = null;
+        var mailMsg = null;
+
         var apiPath = null;
 
+
         try {
-            let response = await graphClient.api(apiPath).post(mailContent);
+            let response = await graphClient.api(apiPath).post({ message: mailMsg });
             console.log(response);
         } catch (error) {
             throw error;
@@ -119,6 +144,13 @@ $(document).ready(function () {
     $('#Focus_CameraMenu').hide();
     $('#btnOpenFileDialog').hide();
     //$('#idLoadRect').hide();
+
+    microsoftTeams.getContext((context) => {
+        teamsContext = context;
+        console.log("Teams Context: ", context);
+        console.log("Identifier to know which channel this tab is tied to: ", context.channelId);
+        SSO();
+    });
 });
 
 function populateSendmailContacts() {
@@ -312,6 +344,13 @@ async function btnAnimation() {
     $("#menu-mask").show();
 
     setTimeout(function () {
-        $("#menu-mask").hide();
+        $("#menu-mask-wait").hide();
+        $("#menu-mask-done").show();
     }, 2000);
+
+    setTimeout(function () {
+        $("#menu-mask").hide();
+        $("#menu-mask-wait").show();
+        $("#menu-mask-done").hide();
+    }, 3000);
 }

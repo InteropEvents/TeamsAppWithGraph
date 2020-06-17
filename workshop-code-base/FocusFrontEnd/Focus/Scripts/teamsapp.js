@@ -1,4 +1,7 @@
-﻿(function () {
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+(function () {
   'use strict';
 
   // Call the initialize API first
@@ -75,26 +78,17 @@
 
 })();
 
-$(document).ready(function () {
-    microsoftTeams.getContext((context) => {
-        teamsContext = context;
-        SSO();
-    });
-});
-
 //https://docs.microsoft.com/en-us/graph/api/channel-post-messages?view=graph-rest-beta&tabs=http
 async function sendMessage() {
     btnAnimation();
+    btnAnimation();
     var teamId = teamsContext.groupId;
     var channelId = teamsContext.channelId;
-
-    //Please read the graph document to find out the api path
-    var path = null;
-
     var messageContent = $('#Focus_Message_Content').val();
 
-    //Please read the graph document to find out the message body format
+    var path = null;
     var message = null;
+
     await graphClientBeta.api(path).post(message);
 }
 
@@ -103,13 +97,10 @@ async function sendCard() {
     btnAnimation();
     var teamId = teamsContext.groupId;
     var channelId = teamsContext.channelId;
-
-    //Please read the graph document to find out the api path
-    var path = null;
-
     var messageContent = $('#Focus_Message_Content').val();
 
-    //Please read the graph document to find out the message body format
+    var path = null;
     var message = null;
+
     await graphClientBeta.api(path).post(message);
 }

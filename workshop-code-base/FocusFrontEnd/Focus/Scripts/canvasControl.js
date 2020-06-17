@@ -1,4 +1,7 @@
-﻿class RectMetadata {
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+class RectMetadata {
     constructor(imageName, imageDescription, canvasWidth, canvasHeight, planId, taskId, rectCoordinates) {
         this.imageName = imageName;
         this.imageDescription = imageDescription;
@@ -198,7 +201,15 @@ async function loadRects(isRefresh = false) {
                             listOfRectMetadata[listOfRectMetadata.length - 1].rectCoordinates.stroke = "green";
                         }
                     }
-                    canvasForDrawing.add(new fabric.Rect(listOfRectMetadata[listOfRectMetadata.length - 1].rectCoordinates));
+                    var fabricRect = new fabric.Rect(listOfRectMetadata[listOfRectMetadata.length - 1].rectCoordinates);
+                    fabricRect.lockMovementX = true;
+                    fabricRect.lockMovementY = true;
+                    fabricRect.lockUniScaling = true;
+                    fabricRect.hasRotatingPoint = false;
+                    fabricRect.lockScalingX = true;
+                    fabricRect.lockScalingY = true;
+
+                    canvasForDrawing.add(fabricRect);
                     canvasForDrawing.renderAll();
                 });
             }
@@ -208,6 +219,8 @@ async function loadRects(isRefresh = false) {
 
     }
 }
+
+let inRectIndex = null;
 
 canvasForDrawing.on('mouse:move',
     async function (o) {
@@ -219,21 +232,26 @@ canvasForDrawing.on('mouse:move',
             var x = o.e.clientX - r.left;
             var y = o.e.clientY - r.top;
             var showToolTip = false;
+            let notInRectCount = 0;
 
             for (var count = 0; count < listOfRectMetadata.length; count++) {
                 if (y > listOfRectMetadata[count].rectCoordinates.top &&
                     y <
                     listOfRectMetadata[count].rectCoordinates.top +
-                    listOfRectMetadata[count].rectCoordinates.height &&
+                    listOfRectMetadata[count].rectCoordinates.height + listOfRectMetadata[count].rectCoordinates.strokeWidth &&
                     x > listOfRectMetadata[count].rectCoordinates.left &&
                     x <
                     listOfRectMetadata[count].rectCoordinates.left +
-                    listOfRectMetadata[count].rectCoordinates.width) {
+                    listOfRectMetadata[count].rectCoordinates.width + listOfRectMetadata[count].rectCoordinates.strokeWidth) {
 
-
-                    if (!global_bInsideRect) {
+                    if (!global_bInsideRect || inRectIndex != count) {
+                        // remember currect active rect
+                        inRectIndex = count;
+                        let timeStamp = new Date().toISOString();
+                        $(".ms-PersonaCard").attr("timeStamp", timeStamp);
                         if (listOfRectMetadata[count].taskId != 0) {
                             // Add current task info to dialog for updating
+                            listOfRectMetadata[count].timeStamp = timeStamp;
                             populateTaskDialog(listOfRectMetadata[count]);
                             getTaskStatus(count, listOfRectMetadata[count].taskId).then(data => {
                                 if (data) {
@@ -254,7 +272,8 @@ canvasForDrawing.on('mouse:move',
                             $("#taskDescription").val(listOfRectMetadata[count].imageDescription);
                         }
 
-                        // only do this once
+                        // make sure it only bind once
+                        $("#createOrUpdatePlannerTask").off("click");
                         $("#createOrUpdatePlannerTask").on("click",
                             {
                                 planId: focusPlanId,
@@ -264,6 +283,7 @@ canvasForDrawing.on('mouse:move',
                             },
                             createOrUpdatePlannerTask);
 
+                        $("#createReport").off("click");
                         $("#createReport").on("click",
                             {
                                 planId: focusPlanId,
@@ -274,12 +294,20 @@ canvasForDrawing.on('mouse:move',
                             createReport);
                         global_bInsideRect = true;
                     }
+
                     $(".ms-PersonaCard").show();
 
                     var normalizedTop = listOfRectMetadata[count].rectCoordinates.top;
                     if (normalizedTop + 456 > clientHeight)
                         normalizedTop = clientHeight - 466;
 
+                    if (normalizedTop < 0) {
+                        normalizedTop = 10;
+                        if (clientHeight < 466) {
+                            $(".ms-PersonaCard").css("bottom", '80px');
+                            $(".ms-PersonaCard").css('height', 'auto');
+                        }
+                    }
 
                     // Adding additional 43 px to offset canvas padding from outer frame
                     $(".ms-PersonaCard").css("top", normalizedTop + 'px');
@@ -317,18 +345,20 @@ canvasForDrawing.on('mouse:move',
                     //    listOfRectMetadata[count].rectCoordinates.width,
                     //    listOfRectMetadata[count].rectCoordinates.height);
 
-                    $("#createOrUpdatePlannerTask").off("click");
-                    $("#createReport").off("click");
-                    global_bInsideRect = false;
+                    notInRectCount++;
+                    if (notInRectCount == listOfRectMetadata.length) {
+                        global_bInsideRect = false;
+                    }
                 }
-            };
+            }
 
             if (!showToolTip) {
                 console.log("not in rectangle");
-                $(".ms-PersonaCard").css("display", "none");
+                //$(".ms-PersonaCard").css("display", "none");
                 //$("#CognitiveTextDisplay").hide();
             }
-        } else {
+        }
+        else {
             if (currentState === states.EDIT && listOfRectMetadata.length < noOfRectsAllowed) {
                 var pointer = canvasForDrawing.getPointer(o.e);
                 if (origX > pointer.x) {
@@ -343,12 +373,69 @@ canvasForDrawing.on('mouse:move',
             }
         }
     });
-
+let rectArray = [];
 canvasForDrawing.on('mouse:up',
     function (o) {
+        $("#createOrUpdatePlannerTask").off("click");
+        $("#createReport").off("click");
+        $(".ms-PersonaCard").css("display", "none");
         if (isDown && currentState === states.EDIT && listOfRectMetadata.length < noOfRectsAllowed && rectsOnCanvas.width > 10) {
-            UploadImage(getSnappedImageFromRect(rectsOnCanvas), "FocusSnappedImage-" + rectsOnCanvas.top.toFixed(), rectsOnCanvas);
+            // check if there is rect cross each other
+            let hasCross = false;
+            rectArray.push(rectsOnCanvas);
+            $.each(rectArray, function (a, b) {
+                $.each(rectArray, function (c, d) {
+                    // corner left top
+                    if (b.left > d.left && b.left < d.left + d.width &&
+                        b.top > d.top && b.top < d.top + d.height) {
+                        hasCross = true;
+                        return false;
+                    }
+                    // corner right top
+                    if (b.left + b.width > d.left && b.left + b.width < d.left + d.width &&
+                        b.top > d.top && b.top < d.top + d.height) {
+                        hasCross = true;
+                        return false;
+                    }
+                    // corner right bottom
+                    if (b.left + b.width > d.left && b.left + b.width < d.left + d.width &&
+                        b.top + b.height > d.top && b.top < d.top + d.height) {
+                        hasCross = true;
+                        return false;
+                    }
+                    // corner left bottom
+                    if (b.left > d.left && b.left < d.left + d.width &&
+                        b.top + b.height > d.top && b.top < d.top + d.height) {
+                        hasCross = true;
+                        return false;
+                    }
+                });
+                if (hasCross) {
+                    return false;
+                }
+            });
+            if (hasCross) {
+                $.each(rectArray, function (a, b) {
+                    if (b.left === rectsOnCanvas.left && b.top === rectsOnCanvas.top
+                        && b.width === rectsOnCanvas.width && b.height === rectsOnCanvas.height) {
+                        rectArray.splice(a, 1);
+                    }
+                });
+                rectsOnCanvas.set({ width: 0 });
+                rectsOnCanvas.set({ height: 0 });
+                canvasForDrawing.renderAll();
+                isDown = false;
+                return;
+            }
+
+            UploadImage(getSnappedImageFromRect(rectsOnCanvas), "FocusSnappedImage-" + rectsOnCanvas.top.toFixed() + "-" + rectsOnCanvas.left.toFixed(), rectsOnCanvas);
         }
+        else if (isDown && currentState === states.EDIT && listOfRectMetadata.length < noOfRectsAllowed && rectsOnCanvas.width <= 10) {
+            rectsOnCanvas.set({ width: 0 });
+            rectsOnCanvas.set({ height: 0 });
+            canvasForDrawing.renderAll();
+        }
+
         isDown = false;
     });
 
@@ -360,7 +447,7 @@ canvasForDrawing.on('mouse:down',
             var pointer = canvasForDrawing.getPointer(o.e);
             origX = pointer.x;
             origY = pointer.y;
-            addRectToCanvas(true, pointer.x, pointer.y)
+            addRectToCanvas(true, pointer.x, pointer.y);
         }
     });
 
@@ -406,7 +493,7 @@ function addRectToCanvas(fromMousedown, x, y, w = 0, h = 0) {
     // Adding restriction to prevent a bug where someone clicks as there is no width of rectangle and we get an exception
     // rectsOnCanvas.width > 10
     if (!fromMousedown && currentState === states.EDIT && listOfRectMetadata.length < noOfRectsAllowed && rectsOnCanvas.width > 10) {
-        UploadImage(getSnappedImageFromRect(rectsOnCanvas), "FocusSnappedImage-" + rectsOnCanvas.top.toFixed(), rectsOnCanvas);
+        UploadImage(getSnappedImageFromRect(rectsOnCanvas), "FocusSnappedImage-" + rectsOnCanvas.top.toFixed() + "-" + rectsOnCanvas.left.toFixed(), rectsOnCanvas);
     }
 }
 

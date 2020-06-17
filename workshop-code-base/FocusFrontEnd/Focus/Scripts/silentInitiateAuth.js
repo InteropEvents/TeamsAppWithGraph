@@ -1,4 +1,7 @@
-﻿microsoftTeams.initialize();
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+microsoftTeams.initialize();
 
 // Get the tab context, and use the information to navigate to Azure AD login page
 microsoftTeams.getContext(function (context) {

@@ -26,7 +26,7 @@
   "accentColor": "#888888",
   "configurableTabs": [
     {
-      "configurationUrl": "https://276dba14.ngrok.io/Home/Configure",
+      "configurationUrl": "https://e09b177690cb.ngrok.io/Home/Configure",
       "canUpdateConfiguration": true,
       "scopes": [
         "team",
@@ -38,8 +38,8 @@
     {
       "entityId": "TestFocusApp",
       "name": "FocusTab",
-      "contentUrl": "https://276dba14.ngrok.io/WorkFlow",
-      "websiteUrl": "https://276dba14.ngrok.io",
+      "contentUrl": "https://e09b177690cb.ngrok.io/WorkFlow",
+      "websiteUrl": "https://e09b177690cb.ngrok.io",
       "scopes": [ "personal" ]
     }
   ],
@@ -49,6 +49,6 @@
   ],
   "validDomains": [
     "excelcustomfunc.azurewebsites.net",
-    "276dba14.ngrok.io"
+    "e09b177690cb.ngrok.io"
   ]
 }

@@ -1,4 +1,7 @@
-﻿using DocumentFormat.OpenXml;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.Graph;
@@ -73,7 +76,7 @@ namespace Focus.Controllers
                     .Headers
                     .Authorization = new AuthenticationHeaderValue("bearer", reportData.graphToken);
 
-                Task.FromResult<object>(null).GetAwaiter().GetResult();
+                await Task.FromResult<object>(null);
             }));
 
             string putUrl = graphServiceClient.Groups.AppendSegmentToRequestUrl(reportData.groupId + "/drive/root:/" + reportData.channelName
@@ -399,7 +402,7 @@ namespace Focus.Controllers
 
         private void generateTaskTableContent(TableDefinitionPart tableDefinitionPart)
         {
-            Table table = new Table() { Id = (UInt32Value)4U, Name = "WorkItemsTable", DisplayName = "WorkItemsTable", Reference = "A1:J" + (reportData.tasks.value.Count+1).ToString(), TotalsRowShown = false };
+            Table table = new Table() { Id = (UInt32Value)4U, Name = "WorkItemsTable", DisplayName = "WorkItemsTable", Reference = "A1:J" + (reportData.tasks.value.Count + 1).ToString(), TotalsRowShown = false };
             table.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
             //table1.AddNamespaceDeclaration("xr", "http://schemas.microsoft.com/office/spreadsheetml/2014/revision");
             //table1.AddNamespaceDeclaration("xr3", "http://schemas.microsoft.com/office/spreadsheetml/2016/revision3");

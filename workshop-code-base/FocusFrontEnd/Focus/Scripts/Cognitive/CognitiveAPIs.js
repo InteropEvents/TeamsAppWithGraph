@@ -1,4 +1,7 @@
-﻿function AnalyzeImage(canvasImgDataUrl) {
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+function AnalyzeImage(canvasImgDataUrl) {
     var params = {
         "visualFeatures": "Objects,Categories,Description,Color",
         "language": "en"

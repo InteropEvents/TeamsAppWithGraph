@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 var VideoRepo = {
     "Metadata":
         [
@@ -7,11 +10,15 @@ var VideoRepo = {
             },
             {
                 "tags": "Refrigerator",
-                "Videos": ["https://web.microsoftstream.com/embed/video/eca401b5-3d82-46e2-9956-9dfe6e78e333?autoplay=false&amp;showinfo=true", "https://web.microsoftstream.com/embed/video/1c5e7ee3-7b5f-4e37-b885-338fda628fc0?autoplay=false&amp;showinfo=true"]
+                "Videos": ["https://web.microsoftstream.com/embed/video/d318df58-507f-450d-b377-3d2983fb0854?autoplay=false&amp;showinfo=true", "https://web.microsoftstream.com/embed/video/09ada903-2b26-4b29-9da0-af532c1d17a7?autoplay=false&amp;showinfo=true"]
             },
             {
                 "tags": "Microwave",
-                "Videos": ["https://web.microsoftstream.com/embed/video/11f26e9c-3504-453d-9908-7a44c6768d97?autoplay=false&amp;showinfo=true", "https://web.microsoftstream.com/embed/video/e0bbc84d-972c-4863-8700-881986618b5d?autoplay=false&amp;showinfo=true"]
+                "Videos": ["https://web.microsoftstream.com/embed/video/0599ad74-6138-4001-b861-1bea6b644834?autoplay=false&amp;showinfo=true", "https://web.microsoftstream.com/embed/video/521bf787-aefb-4026-9322-26b43f112a2c?autoplay=false&amp;showinfo=true"]
+            },
+            {
+                "tags": "Oven",
+                "Videos": ["https://web.microsoftstream.com/embed/video/a75fbaed-11fb-4283-9a9e-4fbf2de33928?autoplay=false&amp;showinfo=true", "https://web.microsoftstream.com/embed/video/bb963fa1-d267-4233-bbc7-4c086b1e9b0d?autoplay=false&amp;showinfo=true"]
             }
         ]
 };

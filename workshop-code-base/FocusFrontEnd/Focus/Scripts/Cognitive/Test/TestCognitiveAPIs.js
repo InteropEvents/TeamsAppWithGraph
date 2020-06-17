@@ -1,4 +1,7 @@
-﻿$(document).ready(function () {
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+$(document).ready(function () {
     $("#DebugSection").append('<p id="testImageAnalyzeAILable">Upload a image to test the image analyze AI</p>');
     $("#DebugSection").append('<input type="file" id="testImageAnalyzeAIElement"  onchange="TestImageAnalyze()"/>');
     $("#DebugSection").append('<br/><br/>');

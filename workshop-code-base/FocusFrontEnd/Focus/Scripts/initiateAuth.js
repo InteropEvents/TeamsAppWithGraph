@@ -1,4 +1,7 @@
-﻿microsoftTeams.initialize();
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+microsoftTeams.initialize();
 
 //microsoftTeams.appInitialization.notifySuccess();
 //microsoftTeams.appInitialization.notifyFailure(reason);

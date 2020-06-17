@@ -1,4 +1,7 @@
-﻿function getImageData(url, callback) {
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+function getImageData(url, callback) {
     console.log("getImageData: Getting Image from URL ", url);
     var httpRequest = new XMLHttpRequest();
     httpRequest.onload = function () {

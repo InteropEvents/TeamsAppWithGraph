@@ -1,4 +1,7 @@
-﻿var focusPlanTitle = "Focus Plan";
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var focusPlanTitle = "Focus Plan";
 var focusPlanId = null;
 var focusBucketId = null;
 var global_bInsideRect = false;
@@ -13,10 +16,10 @@ async function populateTaskDialog(rectmd) {
     $('#createOrUpdatePlannerTask').css("display", "none");
     if (gbucketData === null) {
         var buckets = await graphClient.api("planner/plans/" + focusPlanId + "/buckets").get();
-            if (buckets === undefined) {
-                console.log("populateTaskDialog(): bucket information not found", task);
-                return;
-            }
+        if (buckets === undefined) {
+            console.log("populateTaskDialog(): bucket information not found", task);
+            return;
+        }
         gbucketData = buckets.value;
     }
     if (rectmd === null) {
@@ -50,6 +53,11 @@ async function populateTaskDialog(rectmd) {
                     return;
                 }
             }
+
+            if (rectmd.timeStamp != $(".ms-PersonaCard").attr("timeStamp")) {
+                return;
+            }
+
             $('#createOrUpdateTaskBtn').text("Update Task");
         }
 
@@ -61,13 +69,8 @@ async function populateTaskDialog(rectmd) {
         // list of assigned users for this task.
         var userGuids = Object.keys(task.assignments);
 
-        $('div.ms-PeoplePicker-searchBox').find('.ms-Persona-secondaryText').each(function () {
-            var i = userGuids.findIndex(g => { return this.innerText === g });
-            if (i > -1)
-                delete userGuids[i];
-        });
-
         // add the users to the searchbox.
+        $('div.ms-PeoplePicker-searchBox .ms-Persona').remove();
         userGuids.forEach(async function (userGuid) {
 
             var user = await graphClient.api("users/" + userGuid).get();
@@ -103,6 +106,7 @@ async function populateTaskDialog(rectmd) {
 }
 
 function createOrUpdatePlannerTask(event) {
+    btnAnimation();
     if (graphAccessToken) {
 
         var planId = event.data.planId;
@@ -140,21 +144,22 @@ function createOrUpdatePlannerTask(event) {
         $('div.ms-PeoplePicker-searchBox').find('.ms-Persona-secondaryText').each(function () {
             numAssignees++;
             plannerTask.assignments[this.innerText] =
-                {
-                    "@odata.type": "#microsoft.graph.plannerAssignment",
-                    "orderHint": " !"
-                }
+            {
+                "@odata.type": "#microsoft.graph.plannerAssignment",
+                "orderHint": " !"
+            }
         });
 
         // if no assignees in the search box, just assign to me.
         if (numAssignees == 0) {
             plannerTask.assignments[userDetails.id] =
-                {
-                    "@odata.type": "#microsoft.graph.plannerAssignment",
-                    "orderHint": " !"
-                }
+            {
+                "@odata.type": "#microsoft.graph.plannerAssignment",
+                "orderHint": " !"
+            }
         }
 
+        // this is for a new task. note the ".post()" and "/planner/tasks"
         if (event.data.taskId === "0") {
             createTask(plannerTask.planId,
                 plannerTask.bucketId,
@@ -199,6 +204,19 @@ function createOrUpdatePlannerTask(event) {
                     console.log("createOrUpdatePlannerTask(): couldn't find RectMetaData for this task!");
                 else {
                     listOfRectMetadata[iRectMD].taskId = task.id;
+                    listOfRectMetadata[iRectMD].rectCoordinates.set("stroke", "green");
+                    canvasForDrawing.renderAll();
+                    $('#createOrUpdateTaskBtn').text("Update Task");
+                    $('#createOrUpdatePlannerTask').off("click");
+                    $("#createOrUpdatePlannerTask").on("click",
+                        {
+                            planId: focusPlanId,
+                            imageName: listOfRectMetadata[iRectMD].imageName,
+                            taskId: listOfRectMetadata[iRectMD].taskId,
+                            imageDescription: listOfRectMetadata[iRectMD].imageDescription
+                        },
+                        createOrUpdatePlannerTask);
+
                     try {
                         var createResponse = await graphClient
                             .api("/groups/" +
@@ -230,19 +248,19 @@ function createOrUpdatePlannerTask(event) {
                 $('div.ms-PeoplePicker-searchBox').find('.ms-Persona-secondaryText').each(function () {
                     numNewAssignees++;
                     plannerTaskForUpdate.assignments[this.innerText] =
-                        {
-                            "@odata.type": "#microsoft.graph.plannerAssignment",
-                            "orderHint": " !"
-                        }
+                    {
+                        "@odata.type": "#microsoft.graph.plannerAssignment",
+                        "orderHint": " !"
+                    }
                 });
 
                 // if no assignees in the search box, just assign to me.
                 if (numNewAssignees == 0) {
                     plannerTaskForUpdate.assignments[userDetails.id] =
-                        {
-                            "@odata.type": "#microsoft.graph.plannerAssignment",
-                            "orderHint": " !"
-                        }
+                    {
+                        "@odata.type": "#microsoft.graph.plannerAssignment",
+                        "orderHint": " !"
+                    }
                 }
 
                 // because this is an existing task, we need to trim out any existing assignees 
@@ -318,7 +336,7 @@ function createOrUpdatePlannerTask(event) {
         }
 
         // remove the event handler for now. we'll turn it on when we enter the rect again.
-        $("#createOrUpdatePlannerTask").off("click");
+        // $("#createOrUpdatePlannerTask").off("click");
     }
 }
 
@@ -631,7 +649,7 @@ async function getTasksAndAssignments() {
             }
         }
     }
-    if ((gGroupPeople !== null) && (gGroupPeople.value !== undefined))   {
+    if ((gGroupPeople !== null) && (gGroupPeople.value !== undefined)) {
         for (let i = 0; i < gGroupPeople.value.length; i++) {
             if (gpeopleData[gGroupPeople.value[i].id] !== undefined)
                 break;

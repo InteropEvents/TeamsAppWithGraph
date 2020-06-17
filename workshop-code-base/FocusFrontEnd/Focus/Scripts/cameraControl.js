@@ -1,4 +1,7 @@
-﻿var audioRecording = false;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+var audioRecording = false;
 var mediaRecorder = null;
 var audioChunks = null;
 var audioBlob = null;
