@@ -1,0 +1,75 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Pickup the replacement part @{triggerBody()?['Tag']}  ",
+            "weight": "Bolder",
+            "size": "Medium"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "auto",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
+                            "size": "Small",
+                            "style": "Person"
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Delivery Manager",
+                            "weight": "Bolder",
+                            "wrap": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "spacing": "None",
+                            "text": "@{utcNow()}",
+                            "isSubtle": true,
+                            "wrap": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "Please pick up the replacement part  @{triggerBody()?['Tag']} from the warehouse and watch the training video for the installation instructions.",
+            "wrap": true
+        },
+        {
+            "type": "FactSet",
+            "facts": [
+               {
+                    "title": "Part Name:",
+                    "value":" @{triggerBody()?['Tag']}"
+                },
+                {
+                    "title": "Available:",
+                    "value": "3"
+                },
+                {
+                    "title": "Assigned to:",
+                    "value": "Delivery Manager"
+                },
+                {
+                    "title": "Due date:",
+                    "value": "@{addDays(utcNow(),2)}"
+                }
+            ]
+        }
+    ]
+}

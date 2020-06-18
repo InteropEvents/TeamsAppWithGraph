@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "TeamId": {
+            "type": "string"
+        },
+        "ChannelId": {
+            "type": "string"
+        },
+        "Tag": {
+            "type": "string"
+        }
+    }
+}
