@@ -112,7 +112,7 @@ async function sendMail() {
 
 
         try {
-            let response = await graphClient.api(apiPath).post({ message: mailMsg });
+            let response = await graphClient.api(apiPath).post(mailMsg);
             console.log(response);
         } catch (error) {
             throw error;
