@@ -5,7 +5,7 @@ function checkInventory() {
     console.log("check inventory clicked");
     $.ajax({
         type: 'POST',
-        data: JSON.stringify({ "TeamId": teamsContext.groupId, "ChannelId": teamsContext.channelId, "Tag": tagFromRect}),
+        //data: JSON.stringify({ "TeamId": teamsContext.groupId, "ChannelId": teamsContext.channelId, "Tag": tagFromRect}),
         contentType: "application/json",
         dataType: 'json',
         url: 'https://prod-17.westus.logic.azure.com:443/workflows/6c7bae7958fe494f8b38bad39596084c/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=fAj8OKMQVg2aSakMuoidbc7mQH5hxEwMWchbPgiYfzI',
