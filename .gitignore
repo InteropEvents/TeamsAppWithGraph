@@ -188,3 +188,4 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 /packages
+/workshop-code-base/FocusFrontEnd/Focus/Manifest/icon.zip
