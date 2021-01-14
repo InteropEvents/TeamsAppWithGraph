@@ -78,7 +78,7 @@
 
 })();
 
-//https://docs.microsoft.com/en-us/graph/api/channel-post-messages?view=graph-rest-beta&tabs=http
+//https://docs.microsoft.com/en-us/graph/api/channel-post-message?view=graph-rest-1.0&tabs=http
 async function sendMessage() {
     btnAnimation();
     btnAnimation();
@@ -92,7 +92,7 @@ async function sendMessage() {
     await graphClientBeta.api(path).post(message);
 }
 
-//https://docs.microsoft.com/en-us/graph/api/channel-post-messages?view=graph-rest-beta&tabs=http
+//https://docs.microsoft.com/en-us/graph/api/channel-post-message?view=graph-rest-1.0&tabs=http
 async function sendCard() {
     btnAnimation();
     var teamId = teamsContext.groupId;
